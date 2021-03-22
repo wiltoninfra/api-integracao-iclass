@@ -1,0 +1,45 @@
+{% extends 'layout.html' %} {% block body %}
+<h1>
+  Dashboard <small> - Bem Vindo, {{ session.username }} !</small>
+</h1>
+<a class="btn btn-success" href="/add_classe"> Add Nova Aula</a>
+<a class="btn btn-success" href="/add_client"> Add Novo Cliente</a>
+<a class="btn btn-success" href="/clients"> Listar alunos</a>
+<a class="btn btn-success" href="/clients"> Listar Professores</a>
+<a class="btn btn-success" href="/clients"> Listar Usuários</a>
+<hr />
+<table class="table table-striped">
+  <tr>
+    <th>Id</th>
+    <th>Titulo</th>
+    <th>Professor</th>
+    <th>Preço/p hr</th>
+    <th>Duração</th>
+    <th>Valor Final</th>    
+    <th></th>    
+    <th></th>
+  </tr>
+  {% for classe in classes %}
+  <tr>
+    <td>{{ classe.id }}</td>
+    <td>{{ classe.title }}</td>
+    <td>{{ classe.teacher }}</td>
+    <td>{{ classe.price }}</td>    
+    <td>{{ classe.time }}</td>    
+    <td>{{ classe.time }}</td>        
+    <td>
+      <a href="edit_classe/{{ classe.id }}" class="btn btn-default pull-right"
+        >Editar</a
+      >
+    </td>
+    <td>
+      <form action="{{url_for('delete_classe', id=classe.id)}}" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Apagar" class="btn btn-danger" />
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

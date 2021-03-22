@@ -1,0 +1,25 @@
+{% extends 'layout.html' %} {% block body %}
+<h1>
+  Clientes cadastrados
+</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Id</th>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>E-mail</th>
+    <th>Tipo do Cliente</th>  
+
+  </tr>
+  {% for clients in clients %}
+  <tr>
+    <td>{{ clients.id }}</td>
+    <td><a href="client/{{ clients.id }}">{{ clients.name }}</a></td>
+    <td>{{ clients.cpf }}</td>   
+    <td>{{ clients.email }}</td>           
+    <td>{{ clients.typeclient }}</td>            
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

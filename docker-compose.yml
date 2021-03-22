@@ -1,0 +1,34 @@
+version: '3.2'
+services:
+  api:
+    build: .
+    container_name: api
+    volumes: 
+      - "./app:/app"
+    environment: 
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=8000   
+    ports:
+      - "5000:5000"
+    links:
+      - "db"  
+
+
+  db:
+    container_name: db
+    image: mysql:8.0
+    volumes:
+      - db-data-mysql:/var/lib/mysql
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbiclass
+      MYSQL_USER: iclass
+      MYSQL_PASSWORD: iclass2021
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    restart: always
+    ports:
+      - 3306:3306
+
+volumes: 
+  db-data-mysql:         

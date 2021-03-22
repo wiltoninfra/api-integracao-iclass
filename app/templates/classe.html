@@ -1,0 +1,11 @@
+{% extends 'layout.html' %} {% block body %}
+<h1>{{ classe.title }}</h1>
+<small>Tempo de aula {{ classe.time }} </small><br>
+<small>Valor da aula {{ classe.price }}</small><br>
+<small>Professor resposável {{ classe.teacher }}</small><br>
+<small>Última atualização: {{ classe.create_date }}</small>
+<hr />
+<div>
+  {{ classe.description | safe }}
+</div>
+{% endblock %}

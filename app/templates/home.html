@@ -1,0 +1,12 @@
+{% extends 'layout.html' %} {% block body %}
+<div class="jumbotron text-center">
+  <h1>I-Class API</h1>
+  <p class="lead">
+    API de integração cadastro aplicativo I-Class
+  </p>
+  {% if session.logged_in == NULL %}
+  <a href="/register" class="btn btn-primary btn-lg">Registrar-se</a>
+  <a href="/login" class="btn btn-success btn-lg">Acessar</a>
+  {% endif %}
+</div>
+{% endblock %}
